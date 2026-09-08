@@ -17,7 +17,7 @@ export default function StoryNavigation({
       aria-label="Story navigation"
       className="scroll-strip w-full min-w-0 max-w-full overflow-x-auto bg-transparent"
     >
-      <div className="flex w-max items-center justify-start gap-1 sm:gap-3 lg:mx-auto lg:w-full lg:justify-center lg:gap-5">
+      <div className="flex w-max min-w-full items-center justify-center gap-2.5 sm:gap-3 lg:gap-5">
         {stories.map((story) => (
           <StoryItem
             key={story.id}
