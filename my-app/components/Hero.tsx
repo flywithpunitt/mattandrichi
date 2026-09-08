@@ -17,13 +17,27 @@ export default function Hero({ story, isPlaying, isMuted }: HeroProps) {
     const video = videoRef.current;
     if (!video) return;
 
+    video.defaultMuted = true;
     video.muted = isMuted;
+    video.playsInline = true;
 
-    if (isPlaying) {
+    const tryPlay = () => {
+      if (!isPlaying) {
+        video.pause();
+        return;
+      }
+
       video.play().catch(() => {});
-    } else {
-      video.pause();
-    }
+    };
+
+    tryPlay();
+    video.addEventListener("loadeddata", tryPlay);
+    video.addEventListener("canplay", tryPlay);
+
+    return () => {
+      video.removeEventListener("loadeddata", tryPlay);
+      video.removeEventListener("canplay", tryPlay);
+    };
   }, [isPlaying, isMuted, story.id]);
 
   return (
@@ -42,9 +56,9 @@ export default function Hero({ story, isPlaying, isMuted }: HeroProps) {
             poster={story.image?.src}
             autoPlay
             loop
-            muted={isMuted}
+            muted
             playsInline
-            preload="metadata"
+            preload="auto"
           />
         ) : story.image ? (
           <Image
