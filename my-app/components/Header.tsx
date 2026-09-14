@@ -12,7 +12,7 @@ function BrandLogo() {
   return (
     <a
       href="/"
-      className="relative flex shrink-0 items-center rounded-full border border-cream/12 bg-ink/35 px-2.5 py-2 shadow-[0_10px_30px_rgba(0,0,0,0.22)] backdrop-blur-md outline-none focus-visible:ring-2 focus-visible:ring-accent/70 sm:px-3.5 sm:py-2.5"
+      className="relative flex shrink-0 items-center outline-none focus-visible:ring-2 focus-visible:ring-accent/70"
       aria-label="Matt & Richi home"
     >
       <span className="relative block h-6 w-[7.4rem] sm:h-8 sm:w-[10.4rem] lg:h-9 lg:w-[11.6rem]">

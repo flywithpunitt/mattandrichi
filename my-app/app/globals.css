@@ -42,6 +42,17 @@ body {
   display: none;
 }
 
+.story-shape {
+  -webkit-mask-image: url("/brand/story-shape-mask.png");
+  mask-image: url("/brand/story-shape-mask.png");
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-position: center;
+  mask-position: center;
+}
+
 .hero-grid {
   background-image:
     linear-gradient(rgba(249, 249, 237, 0.045) 1px, transparent 1px),

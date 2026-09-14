@@ -41,8 +41,7 @@ export const stories: Story[] = [
       src: "https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=2000&q=80",
       alt: "Contemporary villa with a still pool at dusk",
     },
-    video:
-      "https://videos.pexels.com/video-files/3773486/3773486-hd_1920_1080_30fps.mp4",
+    video: "/home-video.mp4",
     atmosphere: {
       glow: "#7A7454",
       glowX: "18%",

@@ -17,19 +17,13 @@ export default function StoryItem({ story, active, onSelect }: StoryItemProps) {
       className="group relative flex w-[4.35rem] shrink-0 flex-col items-center gap-1.5 bg-transparent outline-none touch-manipulation sm:w-[5.4rem] sm:gap-2 lg:w-[6.15rem]"
     >
       <span
-        className={`relative grid size-[3.55rem] place-items-center rounded-full transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] sm:size-[4.45rem] lg:size-[4.9rem] motion-safe:group-hover:-translate-y-0.5 motion-safe:group-hover:scale-[1.03] ${
-          active ? "motion-safe:-translate-y-px" : ""
+        className={`relative aspect-[1024/915] h-[3.55rem] w-auto transition-[transform,filter] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] sm:h-[4.45rem] lg:h-[4.9rem] motion-safe:group-hover:-translate-y-0.5 motion-safe:group-hover:scale-[1.03] ${
+          active
+            ? "motion-safe:-translate-y-px [filter:drop-shadow(0_0_0.6px_#FCEB15)_drop-shadow(0_0_0.6px_#FCEB15)_drop-shadow(0_0_12px_rgba(252,235,21,0.22))]"
+            : "[filter:drop-shadow(0_0_0.6px_rgba(249,249,237,0.42))] group-hover:[filter:drop-shadow(0_0_0.8px_rgba(249,249,237,0.7))] group-focus-visible:[filter:drop-shadow(0_0_0.8px_#FCEB15)]"
         }`}
       >
-        <span
-          className={`absolute inset-0 rounded-full transition-shadow duration-500 ${
-            active
-              ? "shadow-[0_0_0_1.5px_#FCEB15,0_0_18px_rgba(252,235,21,0.22)]"
-              : "shadow-[0_0_0_1px_rgba(249,249,237,0.28)] group-hover:shadow-[0_0_0_1.5px_rgba(249,249,237,0.55)] group-focus-visible:shadow-[0_0_0_1.5px_#FCEB15]"
-          }`}
-        />
-
-        <span className="absolute inset-[3px] overflow-hidden rounded-full bg-ink/30 ring-1 ring-inset ring-black/25 sm:inset-[4px]">
+        <span className="story-shape absolute inset-0 overflow-hidden bg-ink/30">
           {story.image ? (
             <Image
               src={story.image.src}
