@@ -48,7 +48,7 @@ export const pipeline: PipelineProject[] = [
     stage: "Quiet",
     note: "A coastal plot we are not rushing. The drawings exist. The release does not — not until the light is right.",
     image: {
-      src: "https://images.unsplash.com/photo-1600047509807-ba8f99d2cdbc?auto=format&fit=crop&w=1600&q=80",
+      src: "https://images.unsplash.com/photo-1487958449943-2429e8be8625?auto=format&fit=crop&w=1600&q=80",
       alt: "A composed house elevation in late light",
     },
   },
