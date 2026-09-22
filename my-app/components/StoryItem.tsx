@@ -1,18 +1,21 @@
+"use client";
+
 import Image from "next/image";
+import Link from "next/link";
 import type { Story } from "@/data/stories";
 
 type StoryItemProps = {
   story: Story;
   active: boolean;
-  onSelect: (id: string) => void;
+  onSelect?: (id: string) => void;
 };
 
 export default function StoryItem({ story, active, onSelect }: StoryItemProps) {
   return (
-    <button
-      type="button"
-      onClick={() => onSelect(story.id)}
-      aria-pressed={active}
+    <Link
+      href={story.href}
+      onClick={() => onSelect?.(story.id)}
+      aria-current={active ? "page" : undefined}
       aria-label={`${story.label} story`}
       className="group relative flex w-[4.35rem] shrink-0 flex-col items-center gap-1.5 bg-transparent outline-none touch-manipulation sm:w-[5.4rem] sm:gap-2 lg:w-[6.15rem]"
     >
@@ -52,6 +55,6 @@ export default function StoryItem({ story, active, onSelect }: StoryItemProps) {
       >
         {story.label}
       </span>
-    </button>
+    </Link>
   );
 }

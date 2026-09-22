@@ -4,7 +4,7 @@ import StoryItem from "./StoryItem";
 type StoryNavigationProps = {
   stories: Story[];
   activeId: string;
-  onSelect: (id: string) => void;
+  onSelect?: (id: string) => void;
 };
 
 export default function StoryNavigation({

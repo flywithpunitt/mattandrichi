@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import type { Story } from "@/data/stories";
 
@@ -12,14 +12,30 @@ type HeroProps = {
 
 export default function Hero({ story, isPlaying, isMuted }: HeroProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
+  const [isMobile, setIsMobile] = useState<boolean | null>(null);
+  const videoSrc =
+    isMobile === null
+      ? null
+      : isMobile && story.videoMobile
+        ? story.videoMobile
+        : story.video;
+
+  useEffect(() => {
+    const media = window.matchMedia("(max-width: 1023px)");
+    const apply = () => setIsMobile(media.matches);
+    apply();
+    media.addEventListener("change", apply);
+    return () => media.removeEventListener("change", apply);
+  }, []);
 
   useEffect(() => {
     const video = videoRef.current;
-    if (!video) return;
+    if (!video || !videoSrc) return;
 
     video.defaultMuted = true;
     video.muted = isMuted;
     video.playsInline = true;
+    video.load();
 
     const tryPlay = () => {
       if (!isPlaying) {
@@ -38,21 +54,21 @@ export default function Hero({ story, isPlaying, isMuted }: HeroProps) {
       video.removeEventListener("loadeddata", tryPlay);
       video.removeEventListener("canplay", tryPlay);
     };
-  }, [isPlaying, isMuted, story.id]);
+  }, [isPlaying, isMuted, story.id, videoSrc]);
 
   return (
     <div className="absolute inset-0 overflow-hidden">
       <div
-        key={story.id}
+        key={`${story.id}-${videoSrc ?? "still"}`}
         className={`absolute inset-0 origin-center ${
-          isPlaying && !story.video ? "hero-drift" : ""
+          isPlaying && !videoSrc ? "hero-drift" : ""
         }`}
       >
-        {story.video ? (
+        {videoSrc ? (
           <video
             ref={videoRef}
             className="absolute inset-0 h-full w-full object-cover"
-            src={story.video}
+            src={videoSrc}
             poster={story.image?.src}
             autoPlay
             loop

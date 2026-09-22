@@ -1,3 +1,4 @@
+import Link from "next/link";
 import type { Story } from "@/data/stories";
 
 type HeroContentProps = {
@@ -31,7 +32,7 @@ export default function HeroContent({ story }: HeroContentProps) {
           {story.description}
         </p>
 
-        <a
+        <Link
           href={story.ctaHref}
           className="mt-6 inline-flex items-center gap-3 rounded-full bg-accent px-5 py-3 text-xs font-medium tracking-[0.16em] text-ink uppercase transition-transform duration-300 hover:-translate-y-px hover:bg-[#fff16a] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cream sm:mt-8 sm:px-6 sm:py-3.5 sm:text-[13px]"
         >
@@ -42,7 +43,7 @@ export default function HeroContent({ story }: HeroContentProps) {
           >
             →
           </span>
-        </a>
+        </Link>
       </div>
     </div>
   );

@@ -23,6 +23,8 @@ export type Story = {
   ctaHref: string;
   image: StoryImage;
   video: string | null;
+  videoMobile?: string | null;
+  href: string;
   atmosphere: StoryAtmosphere;
 };
 
@@ -36,12 +38,14 @@ export const stories: Story[] = [
     description:
       "Homes chosen for light, proportion, and the way a day actually unfolds — never for a listing photograph alone.",
     ctaLabel: "Begin the search",
-    ctaHref: "#buy",
+    ctaHref: "/buy",
+    href: "/buy",
     image: {
       src: "https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=2000&q=80",
       alt: "Contemporary villa with a still pool at dusk",
     },
     video: "/home-video.mp4",
+    videoMobile: "/home%20mobile%20video.mp4",
     atmosphere: {
       glow: "#7A7454",
       glowX: "18%",
@@ -60,7 +64,8 @@ export const stories: Story[] = [
     description:
       "A discreet process for owners who want the story of a home told with judgement, patience, and care.",
     ctaLabel: "Start a conversation",
-    ctaHref: "#sell",
+    ctaHref: "/sell",
+    href: "/sell",
     image: {
       src: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=2000&q=80",
       alt: "Sunlit modern house with a landscaped courtyard",
@@ -85,7 +90,8 @@ export const stories: Story[] = [
     description:
       "Residences for people who want architecture, quiet rooms, and a neighbourhood — not merely an address.",
     ctaLabel: "See available homes",
-    ctaHref: "#lease",
+    ctaHref: "/lease",
+    href: "/lease",
     image: {
       src: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=2000&q=80",
       alt: "Open-plan living room with floor-to-ceiling glass",
@@ -110,7 +116,8 @@ export const stories: Story[] = [
     description:
       "New work, from first sketch to first evening in — followed closely, released only when it is ready.",
     ctaLabel: "Explore the pipeline",
-    ctaHref: "#projects",
+    ctaHref: "/projects",
+    href: "/projects",
     image: {
       src: "https://images.unsplash.com/photo-1487958449943-2429e8be8625?auto=format&fit=crop&w=2000&q=80",
       alt: "Architectural concrete facade with deep-set windows",
@@ -135,7 +142,8 @@ export const stories: Story[] = [
     description:
       "Matt & Richi — a practice built around discretion, long-view advice, and the belief that a home should feel inevitable.",
     ctaLabel: "Meet the practice",
-    ctaHref: "#our-story",
+    ctaHref: "/our-story",
+    href: "/our-story",
     image: {
       src: "https://images.unsplash.com/photo-1600880292089-90a7e086ee0c?auto=format&fit=crop&w=2000&q=80",
       alt: "Two people in conversation across a quiet studio table",

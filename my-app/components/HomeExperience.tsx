@@ -18,6 +18,19 @@ export default function HomeExperience() {
     setActiveId(id);
   }, []);
 
+  useEffect(() => {
+    function applyHash() {
+      const id = window.location.hash.replace("#", "");
+      if (id && stories.some((item) => item.id === id)) {
+        setActiveId(id);
+      }
+    }
+
+    applyHash();
+    window.addEventListener("hashchange", applyHash);
+    return () => window.removeEventListener("hashchange", applyHash);
+  }, []);
+
   const cycleStory = useCallback(
     (direction: 1 | -1) => {
       const index = stories.findIndex((item) => item.id === activeId);
